@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia - Iris y Matías</title>
+    <meta name="description" content="Una historia de amor interactiva que celebra nuestro primer año juntos. Un viaje romántico a través de siete capítulos llenos de momentos especiales.">
+    <meta property="og:title" content="Nuestra Historia - Un Año de Amor">
+    <meta property="og:description" content="Una historia de amor interactiva que celebra nuestro primer año juntos.">
+    <meta property="og:type" content="website">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Skip to content link for screen readers -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Hearts animation container -->
+    <div class="hearts-container" id="hearts-container" aria-hidden="true"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-top">
+                <h1 class="title">Iris Lazzarini, amor mío ❤️</h1>
+                <div class="controls">
+                    <button type="button" class="btn btn-icon" id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+                        🌙
+                    </button>
+                    <button type="button" class="btn btn-icon" id="settings-btn" aria-label="Configuración" title="Configuración">
+                        ⚙️
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-text" id="progress-text">Capítulo 1 de 7</span>
+                    <button type="button" class="btn btn-secondary" id="reset-btn" style="font-size: 0.8rem; padding: 0.25rem 0.75rem;">
+                        🔄 Reiniciar
+                    </button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 14.3%"></div>
+                </div>
+                <nav class="progress-dots" role="navigation" aria-label="Navegación por capítulos">
+                    <button type="button" class="progress-dot active" data-chapter="1" aria-label="Capítulo 1" aria-current="true"></button>
+                    <button type="button" class="progress-dot" data-chapter="2" aria-label="Capítulo 2"></button>
+                    <button type="button" class="progress-dot" data-chapter="3" aria-label="Capítulo 3"></button>
+                    <button type="button" class="progress-dot" data-chapter="4" aria-label="Capítulo 4"></button>
+                    <button type="button" class="progress-dot" data-chapter="5" aria-label="Capítulo 5"></button>
+                    <button type="button" class="progress-dot" data-chapter="6" aria-label="Capítulo 6"></button>
+                    <button type="button" class="progress-dot" data-chapter="7" aria-label="Capítulo 7"></button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <article class="chapter-header">
+                <h2 class="chapter-title" id="chapter-title">Capítulo 1 – La curiosidad</h2>
+            </article>
+            
+            <div class="chapter-content" id="chapter-content" aria-live="polite">
+                <!-- Chapter content will be inserted here -->
+            </div>
+
+            <div class="typewriter-controls" id="typewriter-controls" style="display: none;">
+                <button type="button" class="btn btn-secondary" id="skip-animation">
+                    ⏭️ Saltar animación
+                </button>
+            </div>
+
+            <!-- Final surprise button (shown only on last chapter) -->
+            <button type="button" class="btn final-surprise" id="final-surprise" style="display: none;">
+                🎁 Abrí tu sorpresa
+            </button>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="navigation" role="navigation" aria-label="Navegación entre capítulos">
+            <button type="button" class="btn nav-btn" id="prev-btn" disabled>
+                ⬅️ Anterior
+            </button>
+            
+            <button type="button" class="btn heart-btn" id="heart-btn" aria-label="Crear corazones" title="Crear corazones">
+                ❤️
+            </button>
+            
+            <button type="button" class="btn nav-btn" id="next-btn">
+                Siguiente ➡️
+            </button>
+        </nav>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settings-modal" role="dialog" aria-labelledby="settings-title" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="settings-title">Configuración</h2>
+                <button type="button" class="close-btn" id="close-modal" aria-label="Cerrar configuración">
+                    ✕
+                </button>
+            </div>
+            
+            <div class="setting-item">
+                <div>
+                    <div class="setting-label">Efecto máquina de escribir</div>
+                    <div class="setting-description">Mostrar texto gradualmente</div>
+                </div>
+                <button type="button" class="toggle active" id="typewriter-toggle" aria-label="Activar o desactivar efecto de escritura">
+                </button>
+            </div>
+            
+            <div class="setting-item">
+                <div>
+                    <div class="setting-label">Sonido</div>
+                    <div class="setting-description">Efectos de sonido al cambiar capítulo</div>
+                </div>
+                <button type="button" class="toggle" id="sound-toggle" aria-label="Activar o desactivar sonidos">
+                </button>
+            </div>
+            
+            <div class="setting-item">
+                <div>
+                    <div class="setting-label">Tema</div>
+                    <div class="setting-description">Cambiar entre modo claro y oscuro</div>
+                </div>
+                <button type="button" class="toggle" id="theme-modal-toggle" aria-label="Cambiar tema">
+                </button>
+            </div>
+            
+            <div class="setting-item">
+                <button type="button" class="btn" id="export-pdf" style="width: 100%;">
+                    📄 Exportar a PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--
+=== DEV NOTES ===
+
+PROJECT STRUCTURE:
+- index.html: Main HTML structure and layout
+- styles.css: All CSS styles, themes, animations, and responsive design
+- script.js: Complete JavaScript application logic and chapter data
+
+CONTENT CUSTOMIZATION:
+- To change chapters: Edit the CHAPTERS array in script.js
+- Each chapter needs: id, title, and body (body text will be split into paragraphs by line breaks)
+- To add more chapters: Add to array and update total count in progress calculations
+
+SURPRISE FUNCTION:
+- The openSurprise() function is in script.js as a placeholder
+- To connect to external URL: Replace the function content with: window.open('YOUR_URL', '_blank')
+- Or redirect current page: window.location.href = 'YOUR_URL'
+
+STYLING CUSTOMIZATION:
+- Theme colors: Edit CSS custom properties in :root and [data-theme="dark"] in styles.css
+- Animation speeds: Modify setTimeout delays in typewriterRender() function in script.js
+- Heart animation: Adjust @keyframes floatUp and spawnHearts() heartCount in respective files
+- Typography: Change font-family in body selector in styles.css
+
+BEHAVIOR CUSTOMIZATION:
+- Typewriter speed: Modify setTimeout delays (30ms for characters, 200ms for paragraphs) in script.js
+- Heart spawn count: Change heartCount variables in spawnHearts functions in script.js
+- Sound settings: Modify oscillator frequencies and durations in playSound() in script.js
+- Auto-save: Controlled by saveState() calls, uses localStorage with 'loveStory_' prefix
+
+DEVELOPMENT NOTES:
+- All functionality is contained in the LoveStoryApp class in script.js
+- CSS uses CSS custom properties for easy theme management
+- JavaScript uses modern ES6+ features and event delegation
+- Full accessibility support with ARIA attributes and keyboard navigation
+- Responsive design with mobile-first approach
+- Performance optimized with object pooling for animations
+-->

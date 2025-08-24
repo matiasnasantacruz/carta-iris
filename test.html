@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Chapter Backgrounds</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .color-box { width: 100px; height: 50px; margin: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Color Test</h1>
+    
+    <div class="test-section">
+        <h3>Light Theme Test Colors</h3>
+        <div class="color-box" style="background: #fff8f6;">warm-peach</div>
+        <div class="color-box" style="background: #fff7f2;">home-cream</div>
+        <div class="color-box" style="background: #ffffff;">bg-card (white)</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Dark Theme Test Colors</h3>
+        <div class="color-box" style="background: #2a251f;">warm-peach-dark</div>
+        <div class="color-box" style="background: #2c241d;">home-cream-dark</div>
+        <div class="color-box" style="background: #2d2520;">bg-card (dark)</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Gradient Test</h3>
+        <div class="color-box" style="background: linear-gradient(180deg, #fff8f6 0%, #ffffff 40%);">Chapter 3 Light</div>
+        <div class="color-box" style="background: linear-gradient(180deg, #fff7f2 0%, #ffffff 40%);">Chapter 4 Light</div>
+        <div class="color-box" style="background: linear-gradient(180deg, #2a251f 0%, #2d2520 40%);">Chapter 3 Dark</div>
+        <div class="color-box" style="background: linear-gradient(180deg, #2c241d 0%, #2d2520 40%);">Chapter 4 Dark</div>
+    </div>
+
+    <div class="test-section">
+        <p><strong>Summary of fixes:</strong></p>
+        <ol>
+            <li><strong>Background Fix:</strong> Changed hardcoded colors to CSS variables that respect theme</li>
+            <li><strong>Effect Cleanup:</strong> Added cleanupPreviousEffects() function that:</li>
+            <ul>
+                <li>Stops typewriter animations</li>
+                <li>Clears hearts container</li>
+                <li>Removes floating elements</li>
+                <li>Removes confetti and raindrops</li>
+                <li>Clears animation classes</li>
+                <li>Removes chapter-specific body classes</li>
+            </ul>
+        </ol>
+    </div>
+</body>
+</html>

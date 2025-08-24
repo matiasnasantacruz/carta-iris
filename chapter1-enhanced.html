@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia - Capítulo 1 Mejorado</title>
+    <meta name="description" content="Una historia de amor interactiva que celebra nuestro primer año juntos. Capítulo 1 con estilo expresivo y animaciones románticas.">
+    
+    <style>
+        /* ===== CSS RESET & FOUNDATION ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme colors */
+            --bg-primary: #fdf8f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #2d1810;
+            --text-secondary: #5a453a;
+            --text-muted: #8b7865;
+            --accent-primary: #d4879c;
+            --accent-secondary: #e6a8bb;
+            --accent-tertiary: #f2c8d4;
+            --border-light: #e8ddd6;
+            --border-medium: #d2c3b8;
+            --shadow-light: rgba(45, 24, 16, 0.08);
+            --shadow-medium: rgba(45, 24, 16, 0.15);
+            --shadow-strong: rgba(45, 24, 16, 0.25);
+            --heart-color: #ff6b9d;
+            --success-color: #7fb069;
+            --focus-color: #d4879c;
+            --focus-outline: 2px solid var(--focus-color);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme colors */
+            --bg-primary: #1a1410;
+            --bg-secondary: #2d2520;
+            --bg-card: #2d2520;
+            --text-primary: #f5f0e8;
+            --text-secondary: #d4c7b8;
+            --text-muted: #a6968a;
+            --accent-primary: #e6a8bb;
+            --accent-secondary: #d4879c;
+            --accent-tertiary: #c2667d;
+            --border-light: #3d342d;
+            --border-medium: #4d453e;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-medium: rgba(0, 0, 0, 0.4);
+            --shadow-strong: rgba(0, 0, 0, 0.6);
+            --heart-color: #ff8cb3;
+            --success-color: #8fbc7a;
+            --focus-color: #e6a8bb;
+        }
+
+        /* ===== GLOBAL STYLES ===== */
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        :focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 8px;
+            background: var(--accent-primary);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 8px;
+        }
+
+        /* ===== LAYOUT COMPONENTS ===== */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            border: 1px solid var(--border-light);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin: 0;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 44px;
+            min-width: 44px;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--shadow-medium);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px var(--shadow-medium);
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            min-width: 44px;
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-light);
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-section {
+            margin-top: 1rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            flex: 1;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            border: 1px solid var(--border-light);
+            margin-bottom: 2rem;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .chapter-content {
+            font-size: 1.1rem;
+            line-height: 2; /* More generous line height for Chapter 1 */
+            color: var(--text-primary);
+            max-width: 100%;
+        }
+
+        .chapter-content p {
+            margin-bottom: 2.5rem; /* Even more spacing for expressive style */
+        }
+
+        .chapter-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== CHAPTER 1 EXPRESSIVE STYLES ===== */
+        /* Italic text for thoughts */
+        .chapter-content em,
+        .chapter-content i {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Bold text for emphasis */
+        .chapter-content strong,
+        .chapter-content b {
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        /* Handwriting style for affectionate phrases */
+        .affection {
+            font-family: 'Brush Script MT', cursive, system-ui;
+            font-size: 1.3em;
+            color: var(--heart-color);
+            font-weight: 600;
+        }
+
+        /* Animated emphasis words */
+        .passion-word {
+            display: inline-block;
+            animation: passionPulse 2s ease-in-out infinite;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b9d, #d4879c, #ff6b9d);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: passionPulse 2s ease-in-out infinite, gradientShift 3s ease-in-out infinite;
+        }
+
+        .surprise-word {
+            display: inline-block;
+            animation: surpriseScale 1.5s ease-in-out infinite;
+            font-weight: 900;
+            color: var(--accent-primary);
+            text-shadow: 0 0 10px rgba(212, 135, 156, 0.3);
+        }
+
+        .perfect-word {
+            display: inline-block;
+            font-family: 'Brush Script MT', cursive, system-ui;
+            font-size: 1.4em;
+            animation: perfectGlow 2.5s ease-in-out infinite;
+            color: var(--heart-color);
+        }
+
+        @keyframes passionPulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.05);
+                filter: brightness(1.2);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes surpriseScale {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+            }
+            25% { 
+                transform: scale(1.1) rotate(1deg);
+            }
+            75% { 
+                transform: scale(1.1) rotate(-1deg);
+            }
+        }
+
+        @keyframes perfectGlow {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(255, 107, 157, 0.3);
+            }
+            50% { 
+                transform: scale(1.08);
+                text-shadow: 0 0 15px rgba(255, 107, 157, 0.6), 0 0 25px rgba(255, 107, 157, 0.4);
+            }
+        }
+
+        /* Floating elements between paragraphs */
+        .floating-heart {
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            animation: floatGentle 3s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .floating-spark {
+            display: block;
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            animation: sparkle 2s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatGentle {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-8px) rotate(5deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% { 
+                transform: scale(1.2) rotate(90deg);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(0.8) rotate(180deg);
+                opacity: 0.9;
+            }
+            75% { 
+                transform: scale(1.1) rotate(270deg);
+                opacity: 1;
+            }
+        }
+
+        /* Large emojis for dramatic effect */
+        .large-emoji {
+            font-size: 1.3em;
+            margin: 0 0.2em;
+        }
+
+        .huge-emoji {
+            font-size: 1.8em;
+            margin: 0 0.3em;
+            display: inline-block;
+            animation: emojiPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes emojiPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .typewriter-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 0.75rem;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            border: 1px solid var(--border-light);
+            margin-bottom: 1rem;
+        }
+
+        .nav-btn {
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .heart-btn {
+            background: var(--heart-color);
+            font-size: 1.5rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .heart-btn:hover {
+            background: var(--heart-color);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        /* ===== HEARTS ANIMATION ===== */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 500;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--heart-color);
+            font-size: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            user-select: none;
+            animation: floatUp 3s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.8) rotate(0deg);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-50vh) scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) scale(0.6) rotate(360deg);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 600px) {
+            .container {
+                padding: 0.75rem;
+            }
+
+            .header,
+            .main-content,
+            .navigation {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+
+            .title {
+                font-size: 1.4rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .controls {
+                justify-content: center;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                max-width: none;
+                width: 100%;
+            }
+
+            .chapter-title {
+                font-size: 1.3rem;
+            }
+
+            .chapter-content {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .heart {
+                display: none;
+            }
+
+            .passion-word,
+            .surprise-word,
+            .perfect-word,
+            .floating-heart,
+            .floating-spark,
+            .huge-emoji {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* ===== HIGH CONTRAST MODE ===== */
+        @media (prefers-contrast: high) {
+            :root {
+                --shadow-light: rgba(0, 0, 0, 0.3);
+                --shadow-medium: rgba(0, 0, 0, 0.5);
+                --shadow-strong: rgba(0, 0, 0, 0.7);
+                --border-light: #666;
+                --border-medium: #333;
+            }
+
+            .btn {
+                border: 2px solid currentColor;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link for screen readers -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Hearts animation container -->
+    <div class="hearts-container" id="hearts-container" aria-hidden="true"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-top">
+                <h1 class="title">Nuestra Historia ❤️</h1>
+                <div class="controls">
+                    <button type="button" class="btn btn-icon" id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+                        🌙
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span class="progress-text" id="progress-text">Capítulo 1 - Versión Expresiva</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 100%"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <article class="chapter-header">
+                <h2 class="chapter-title" id="chapter-title">Capítulo 1 – El comienzo</h2>
+            </article>
+            
+            <div class="chapter-content" id="chapter-content" aria-live="polite">
+                <!-- Chapter content will be inserted here -->
+            </div>
+
+            <div class="typewriter-controls" id="typewriter-controls" style="display: none;">
+                <button type="button" class="btn btn-secondary" id="skip-animation">
+                    ⏭️ Saltar animación
+                </button>
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="navigation" role="navigation" aria-label="Navegación y efectos">
+            <button type="button" class="btn nav-btn" id="restart-btn">
+                🔄 Reiniciar
+            </button>
+            
+            <button type="button" class="btn heart-btn" id="heart-btn" aria-label="Crear corazones" title="Crear corazones">
+                ❤️
+            </button>
+            
+            <button type="button" class="btn nav-btn" id="toggle-typewriter">
+                ⌨️ Alternar escritura
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // ===== CHAPTER DATA =====
+        const CHAPTER = {
+            id: 1,
+            title: "Capítulo 1 – El comienzo",
+            body: `Yo ya la conocía de antes… siempre hablaban de ella como una persona con mucha proyección ✨ y súper hábil.
+*Yo quería conocerla en persona.*
+
+Un día… 📲 me manda solicitudes y nos seguimos en redes. Sin hablar todavía.
+Hasta que… ¡ella da el primer paso! 😏
+Esa noche hablamos hasta las 2 am ⏰ (sí, lunes, y yo al otro día laburaba). Pero no me importó: **me encantaba**.
+
+Después tuvimos nuestra primera cita. La verdad: no teníamos mucho en común 🤷‍♂️. Yo hablaba un montón y ella casi nada… solo se reía 🙈.
+Pero ya ahí vi que era hermosa 😍 y *completamente diferente*, con un aire de dulzura que me atrapó 💖.
+
+Nos vimos un par de veces más. Yo le llevaba a la escuela cositas para la merienda 🍪, hasta mate ☕. Detalles simples… pero llenos de ganas de cuidarla.
+
+Y entonces… llega ese sábado 24 de agosto. Ella quería comer ñoquis 🍝 y me dijo que iba a cocinar. Yo conseguí todo.
+Estuvo hasta tarde, dale que dale, ¡y terminamos comiendo a la 1 de la mañana! 😂
+
+Esa noche… después de los ñoquis…
+🔥 **tuvimos un momento de PASIÓN** 🔥
+
+Y en medio de todo… nos miramos… y sin pensarlo…
+💍 **NOS OFICIALIZAMOS COMO PAREJA.**
+Inesperado. Loco.
+Pero absolutamente **perfecto** 🥰.`
+        };
+
+        // ===== APPLICATION STATE =====
+        class LoveStoryApp {
+            constructor() {
+                this.isTypewriting = false;
+                this.typewriterTimeout = null;
+                this.typewriterEnabled = true;
+                this.heartPool = [];
+                
+                this.init();
+            }
+
+            // ===== INITIALIZATION =====
+            init() {
+                this.setupEventListeners();
+                this.initTheme();
+                this.renderChapter();
+            }
+
+            // ===== EVENT LISTENERS =====
+            setupEventListeners() {
+                // Heart button
+                document.getElementById('heart-btn').addEventListener('click', (e) => {
+                    this.spawnHearts(e.clientX, e.clientY);
+                });
+
+                // Theme toggle
+                document.getElementById('theme-toggle').addEventListener('click', () => this.toggleTheme());
+
+                // Controls
+                document.getElementById('restart-btn').addEventListener('click', () => this.renderChapter());
+                document.getElementById('skip-animation').addEventListener('click', () => this.skipTypewriter());
+                document.getElementById('toggle-typewriter').addEventListener('click', () => this.toggleTypewriter());
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+            }
+
+            handleKeyboard(e) {
+                switch (e.key) {
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        this.renderChapter();
+                        break;
+                    case 'Escape':
+                        if (this.isTypewriting) {
+                            this.skipTypewriter();
+                        }
+                        break;
+                    case 't':
+                    case 'T':
+                        this.toggleTypewriter();
+                        break;
+                }
+            }
+
+            // ===== CHAPTER RENDERING =====
+            renderChapter() {
+                // Update title
+                document.getElementById('chapter-title').textContent = CHAPTER.title;
+
+                // Clear content
+                const contentEl = document.getElementById('chapter-content');
+                contentEl.innerHTML = '';
+
+                // Split body into paragraphs
+                const paragraphs = CHAPTER.body.split('\n').filter(p => p.trim());
+
+                if (this.typewriterEnabled) {
+                    this.typewriterRender(contentEl, paragraphs);
+                } else {
+                    this.instantRender(contentEl, paragraphs);
+                }
+            }
+
+            instantRender(contentEl, paragraphs) {
+                paragraphs.forEach((paragraph, index) => {
+                    const p = document.createElement('p');
+                    p.innerHTML = this.processContent(paragraph);
+                    contentEl.appendChild(p);
+                    
+                    // Add floating elements
+                    if (index === 2) { // After the first conversation paragraph
+                        const heart = document.createElement('div');
+                        heart.className = 'floating-heart';
+                        heart.innerHTML = '💕';
+                        contentEl.appendChild(heart);
+                    }
+                    if (index === 5) { // After the ñoquis paragraph
+                        const spark = document.createElement('div');
+                        spark.className = 'floating-spark';
+                        spark.innerHTML = '✨';
+                        contentEl.appendChild(spark);
+                    }
+                });
+                this.hideTypewriterControls();
+            }
+
+            typewriterRender(contentEl, paragraphs) {
+                this.isTypewriting = true;
+                this.showTypewriterControls();
+                
+                let paragraphIndex = 0;
+                let charIndex = 0;
+                let currentP = null;
+
+                const typeNextChar = () => {
+                    if (paragraphIndex >= paragraphs.length) {
+                        this.isTypewriting = false;
+                        this.hideTypewriterControls();
+                        return;
+                    }
+
+                    if (charIndex === 0) {
+                        currentP = document.createElement('p');
+                        contentEl.appendChild(currentP);
+                        
+                        // Add floating elements during typewriter
+                        if (paragraphIndex === 2) {
+                            const heart = document.createElement('div');
+                            heart.className = 'floating-heart';
+                            heart.innerHTML = '💕';
+                            contentEl.appendChild(heart);
+                        }
+                        if (paragraphIndex === 5) {
+                            const spark = document.createElement('div');
+                            spark.className = 'floating-spark';
+                            spark.innerHTML = '✨';
+                            contentEl.appendChild(spark);
+                        }
+                    }
+
+                    const currentParagraph = paragraphs[paragraphIndex];
+                    const processedContent = this.processContent(currentParagraph.slice(0, charIndex + 1));
+                    currentP.innerHTML = processedContent;
+                    
+                    charIndex++;
+
+                    if (charIndex >= currentParagraph.length) {
+                        paragraphIndex++;
+                        charIndex = 0;
+                        this.typewriterTimeout = setTimeout(typeNextChar, 300); // Pause between paragraphs
+                    } else {
+                        this.typewriterTimeout = setTimeout(typeNextChar, 35); // Character speed
+                    }
+                };
+
+                typeNextChar();
+            }
+
+            processContent(text) {
+                // Process special formatting for Chapter 1
+                return text
+                    // Handle italics (thoughts)
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                    // Handle bold emphasis
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    // Handle passion words
+                    .replace(/PASIÓN/g, '<span class="passion-word">PASIÓN</span>')
+                    // Handle surprise words
+                    .replace(/NOS OFICIALIZAMOS COMO PAREJA/g, '<span class="surprise-word">NOS OFICIALIZAMOS COMO PAREJA</span>')
+                    // Handle perfect words
+                    .replace(/perfecto/g, '<span class="perfect-word">perfecto</span>')
+                    // Handle affectionate phrases
+                    .replace(/me atrapó/g, '<span class="affection">me atrapó</span>')
+                    .replace(/me encantaba/g, '<span class="affection">me encantaba</span>')
+                    // Make certain emojis larger
+                    .replace(/🔥/g, '<span class="huge-emoji">🔥</span>')
+                    .replace(/💍/g, '<span class="huge-emoji">💍</span>')
+                    .replace(/💖/g, '<span class="large-emoji">💖</span>')
+                    .replace(/😍/g, '<span class="large-emoji">😍</span>')
+                    .replace(/🥰/g, '<span class="large-emoji">🥰</span>');
+            }
+
+            skipTypewriter() {
+                if (!this.isTypewriting) return;
+                
+                clearTimeout(this.typewriterTimeout);
+                this.isTypewriting = false;
+                this.hideTypewriterControls();
+                
+                const contentEl = document.getElementById('chapter-content');
+                const paragraphs = CHAPTER.body.split('\n').filter(p => p.trim());
+                
+                this.instantRender(contentEl, paragraphs);
+            }
+
+            toggleTypewriter() {
+                this.typewriterEnabled = !this.typewriterEnabled;
+                const btn = document.getElementById('toggle-typewriter');
+                btn.textContent = this.typewriterEnabled ? '⌨️ Alternar escritura' : '📝 Alternar escritura';
+                btn.setAttribute('aria-label', this.typewriterEnabled ? 'Desactivar efecto de escritura' : 'Activar efecto de escritura');
+            }
+
+            showTypewriterControls() {
+                document.getElementById('typewriter-controls').style.display = 'flex';
+            }
+
+            hideTypewriterControls() {
+                document.getElementById('typewriter-controls').style.display = 'none';
+            }
+
+            // ===== THEME MANAGEMENT =====
+            initTheme() {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    document.body.setAttribute('data-theme', 'dark');
+                    this.updateThemeToggle(true);
+                } else {
+                    this.updateThemeToggle(false);
+                }
+            }
+
+            toggleTheme() {
+                const isDark = document.body.hasAttribute('data-theme');
+                
+                if (isDark) {
+                    document.body.removeAttribute('data-theme');
+                    this.updateThemeToggle(false);
+                } else {
+                    document.body.setAttribute('data-theme', 'dark');
+                    this.updateThemeToggle(true);
+                }
+            }
+
+            updateThemeToggle(isDark) {
+                const themeBtn = document.getElementById('theme-toggle');
+                themeBtn.textContent = isDark ? '☀️' : '🌙';
+                themeBtn.setAttribute('aria-label', isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+            }
+
+            // ===== HEARTS ANIMATION =====
+            spawnHearts(x, y) {
+                const container = document.getElementById('hearts-container');
+                const heartCount = 12;
+                
+                for (let i = 0; i < heartCount; i++) {
+                    setTimeout(() => {
+                        this.createHeart(x, y, container);
+                    }, i * 100);
+                }
+            }
+
+            createHeart(x, y, container) {
+                // Check for reduced motion preference
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+
+                let heart;
+                
+                // Reuse heart from pool or create new one
+                if (this.heartPool.length > 0) {
+                    heart = this.heartPool.pop();
+                } else {
+                    heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '❤️';
+                }
+
+                // Position the heart
+                heart.style.left = `${x - 12}px`;
+                heart.style.top = `${y - 12}px`;
+                heart.style.animation = 'none';
+                
+                container.appendChild(heart);
+                
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    heart.style.animation = 'floatUp 3s ease-out forwards';
+                });
+
+                // Return to pool after animation
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                        this.heartPool.push(heart);
+                    }
+                }, 3000);
+            }
+        }
+
+        // ===== APPLICATION INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            window.loveStoryApp = new LoveStoryApp();
+        });
+    </script>
+</body>
+</html>
+
+<!--
+=== DEV NOTES ===
+
+EXPRESSIVE CHAPTER 1 FEATURES:
+- Enhanced typography with italics for thoughts and bold for emphasis
+- Handwriting-style fonts for affectionate phrases
+- Animated words: "PASIÓN" pulses with gradient, "NOS OFICIALIZAMOS" scales with rotation
+- Large emojis for dramatic effect (🔥💍💖😍🥰)
+- Floating hearts 💕 and sparks ✨ between key paragraphs
+- Generous spacing (2.5rem between paragraphs, line-height 2)
+
+ANIMATIONS:
+- All animations respect prefers-reduced-motion
+- Passion words have pulsing gradient effect
+- Surprise words scale and rotate subtly
+- Perfect words glow with handwriting font
+- Floating elements have gentle movement
+- Large emojis pulse gently
+
+INTERACTIONS:
+- Space/Enter: Restart chapter rendering
+- Escape: Skip typewriter animation if active
+- T: Toggle typewriter mode
+- Heart button: Spawn floating hearts
+- Theme toggle: Switch light/dark modes
+
+ACCESSIBILITY:
+- Keyboard navigation fully supported
+- ARIA labels for screen readers
+- Skip link for content navigation
+- Respects reduced motion preferences
+- High contrast mode support
+-->
