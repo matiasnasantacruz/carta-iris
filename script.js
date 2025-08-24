@@ -1199,7 +1199,7 @@ class LoveStoryApp {
     openSurprise() {
         // Placeholder function - will be replaced with actual link
         console.log('Opening surprise... (placeholder function)');
-        alert('¡Tu sorpresa está esperándote! 🎁\n(Esta función será conectada a tu sorpresa real)');
+        alert('¡Tu sorpresa está esperándote! 🎁\n(Esta función será conectada a tu sorpresa real el día 24/08/2025)');
         
         // Trigger hearts celebration
         for (let i = 0; i < 5; i++) {
